@@ -83,6 +83,8 @@ class ZeroPadding:
                     "attention_mask": np.zeros((reserved_length, reserved_length), dtype=bool),
                 }
             )
+            if "position_ids" in batch_records[0]:
+                batch_records[-1]['position_ids'] = [0] * reserved_length
 
         return batch_records
 
